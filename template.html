@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Books</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="vitrina">Книги</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    Авторы
+                    <select class="form-control aut" placeholder="авторы">
+                        <option></option>
+                        [%option_authors%]
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    Жанры
+                    <select class="form-control gen" placeholder="жанры">
+                        <option></option>
+                        [%option_genre%]
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    Поиск
+                    <div class='search'>
+                        <input type="search" id="fld_search" placeholder="Поиск">
+                        <button type="button"  class="btn btn-primary" id="btn_searche">Найти</button>
+                    </div>
+                    <!-- <div class="form-inline active-cyan-4">
+                        <input class="form-control" type="text" placeholder="Поиск">
+                        <i class="fa fa-search" aria-hidden="true" title="Найти">искать</i>
+                        <button>искать</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-success click_add">Добавить</a>
+        [%books_items%]
+        <div class="pagination">[%pagination%]</div>
+        <!--*******************-->
+        <!--*******************-->
+        <div class="create_form all">
+            <form action="controllers.php" method="post" id="create_book" class="create_form" enctype="multipart/form-data">
+                <div>
+                    <label for="title_create">Название</label>
+                    <input type="text" id="title_create" name="create_title" class="form-control" required="required">
+                </div>
+                <div>
+                    <label for="date_create">Дата</label>
+                    <input type="date" id="date_create" name="date" class="form-control">
+                </div>
+                <div>
+                    <label for="author_create">Автор</label>
+                    <select name="author" id="author_create" class="form-control" require="required">
+                        <option></option>
+                        [%option_authors%]
+                    </select>
+                </div>
+                <div>
+                    <label for="ganre_create">Жанр</label>
+                    <select name="ganre" id="ganre_create" class="form-control" require="required">
+                        <option></option>
+                        [%option_genre%]
+                    </select>
+                </div>
+                <div>
+                    <label for="description_create">Описание</label>
+                    <textarea rows="5" cols="10" name="description" id="description_create" class="form-control"></textarea>
+                </div>
+                <div>
+                    <!-- rpw -->
+                    <label for="image_create"></label>
+                    <input type="file" name="image" id="image_create" class="form-control" accept="image/jpeg">
+                </div>
+                <!-- <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Название файла</label>
+                        <div class="col-sm-8">
+                            <input type="text" id="name" class="form-control" name="name"
+                                   placeholder="Название файла">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemimg1" class="col-sm-2 control-label">Файл</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="itemimg" id="itemimg" class="form-control-file"
+                                   accept="image/jpeg">
+                        </div>
+                    </div> -->
+                <div class="cart_total">
+                    <button type="submit" id="btn_create" class="btn btn-primary">Создать</button>
+                    <button type="button" class="btn btn-danger cancel_update">Отмена</button>
+                </div>
+            </form>
+        </div>
+        <!-- ********************-->
+        <div class="update_form all">
+            <form action="controllers.php" method="post" id="update_book" class="update_form" enctype="multipart/form-data">
+                <div>
+                    <label for="title_update">Название</label>
+                    <input type="text" id="title_update" name="update_title" class="form-control" required="required">
+                </div>
+                <div>
+                    <label for="date_update">Дата</label>
+                    <input type="text" id="date_update" name="date" class="form-control">
+                </div>
+                <div>
+                    <label for="author_update">Автор</label>
+                    <select name="author" id="author_update" class="form-control" require="required">
+                        <option></option>
+                        [%option_authors%]
+                    </select>
+                </div>
+                <div>
+                    <label for="ganre_update">Жанр</label>
+                    <select name="ganre" id="ganre_update" class="form-control" require="required">
+                        <option></option>
+                        [%option_genre%]
+                    </select>
+                </div>
+                <div>
+                    <label for="description_update">Описание</label>
+                    <textarea rows="5" cols="10" name="description" id="description_update" class="form-control"></textarea>
+                </div>
+                <div class="img">
+                    <!-- rpw -->
+                    <label for="image_update"></label>
+                    <input type="file" name="image" id="image_update" class="form-control" accept="image/jpeg">
+                </div>
+                <div class="cart_total">
+                    <button type="submit" id="btn_update" class="btn btn-primary">Изменить</button>
+                    <button type="button" class="btn btn-danger cancel_update">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
